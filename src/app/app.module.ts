@@ -18,6 +18,7 @@ import { ButtonOverviewExampleComponent } from './pages/button-overview-example/
 import { FormFieldDemoComponent } from './pages/form-field-demo/form-field-demo.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/radio-checkbox-example.component';
+import { SignalsComponent } from './pages/signals/signals.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/ra
     ButtonOverviewExampleComponent,
     RadioCheckboxExampleComponent,
     NavigationComponent,
+    SignalsComponent,
   ],
   imports: [
     BrowserModule,

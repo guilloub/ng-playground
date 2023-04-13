@@ -4,6 +4,7 @@ import { ButtonOverviewExampleComponent } from './pages/button-overview-example/
 import { FormFieldDemoComponent } from './pages/form-field-demo/form-field-demo.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/radio-checkbox-example.component';
+import { SignalsComponent } from './pages/signals/signals.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     title: 'Radio & Checkbox',
   },
   { path: 'formfield', component: FormFieldDemoComponent, title: 'Form Field' },
+  { path: 'signals', component: SignalsComponent, title: 'Signals' },
   {
     path: 'button',
     component: ButtonOverviewExampleComponent,
