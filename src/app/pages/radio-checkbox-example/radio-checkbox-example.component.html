@@ -1,0 +1,72 @@
+<!-- <section>
+  <mat-radio-group aria-label="Select an option" color="primary">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
+</section>
+<section>
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
+</section>
+<section>
+  <mat-radio-group aria-label="Select an option" color="warn">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
+</section>
+<div></div>
+<section>
+  <label>Align:</label>
+  <mat-radio-group [(ngModel)]="labelPosition">
+    <mat-radio-button value="after">After</mat-radio-button>
+    <mat-radio-button value="before">Before</mat-radio-button>
+  </mat-radio-group>
+</section>
+<section>
+  <mat-radio-group
+    aria-label="Select an option"
+    [labelPosition]="labelPosition"
+  >
+    <mat-radio-button value="1" color="primary">Primary</mat-radio-button>
+    <mat-radio-button value="2">Accent</mat-radio-button>
+    <mat-radio-button value="2" color="warn">Warn</mat-radio-button>
+  </mat-radio-group>
+</section>
+
+<mat-divider></mat-divider>
+<section class="example-section">
+  <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+  <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+</section>
+
+<section class="example-section">
+  <span class="example-list-section">
+    <mat-checkbox
+      class="example-margin"
+      [checked]="allComplete"
+      [color]="task.color"
+      [indeterminate]="someComplete()"
+      [labelPosition]="labelPosition"
+      (change)="setAll($event.checked)"
+    >
+      {{ task.name }}
+    </mat-checkbox>
+  </span>
+  <span class="example-list-section">
+    <ul>
+      <li *ngFor="let subtask of task.subtasks">
+        <mat-checkbox
+          [(ngModel)]="subtask.completed"
+          [labelPosition]="labelPosition"
+          [color]="subtask.color"
+          (ngModelChange)="updateAllComplete()"
+        >
+          {{ subtask.name }}
+        </mat-checkbox>
+      </li>
+    </ul>
+  </span>
+</section> -->
+plop
