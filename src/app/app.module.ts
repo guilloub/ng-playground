@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,6 +32,7 @@ import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/ra
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     MaterialModule,
     LayoutModule,
     MatToolbarModule,

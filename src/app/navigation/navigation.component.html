@@ -1,4 +1,7 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container
+  class="sidenav-container mat-app-background"
+  [class.dark-theme]="isDark"
+>
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -26,6 +29,9 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>ng-playground</span>
+      <mat-slide-toggle class="dark-theme-toggle" [(ngModel)]="isDark"
+        >Dark mode</mat-slide-toggle
+      >
     </mat-toolbar>
 
     <!-- Add Content Here -->
