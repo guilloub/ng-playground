@@ -70,13 +70,26 @@
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
   </mat-form-field>
   <mat-form-field appearance="outline" color="warn">
-    <mat-label>Primary form field</mat-label>
+    <mat-label>Warn form field</mat-label>
+    <input matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Accent form field</mat-label>
     <input matInput placeholder="Placeholder" />
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
   </mat-form-field>
 
+  <mat-form-field appearance="outline" color="primary">
+    <mat-label>Primary Select</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <mat-form-field appearance="outline" color="accent">
-    <mat-label>Select</mat-label>
+    <mat-label>Accent Select</mat-label>
     <mat-select>
       <mat-option value="one">First option</mat-option>
       <mat-option value="two">Second option</mat-option>
@@ -84,10 +97,14 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline" color="warn">
-    <mat-label>Select</mat-label>
+    <mat-label>Warn Select</mat-label>
     <mat-select>
       <mat-option value="one">First option</mat-option>
       <mat-option value="two">Second option</mat-option>
     </mat-select>
   </mat-form-field>
+</div>
+
+<div>
+  <button mat-button (click)="openDialog()">Open dialog</button>
 </div>

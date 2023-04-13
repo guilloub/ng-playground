@@ -33,8 +33,8 @@ $ng-playground-theme: mat.define-light-theme(
 $dark-theme: mat.define-dark-theme(
   (
     color: (
-      primary: mat.define-palette(mat.$pink-palette),
-      accent: mat.define-palette(mat.$blue-grey-palette),
+      primary: mat.define-palette(mat.$green-palette),
+      accent: mat.define-palette(mat.$amber-palette),
     ),
     // Only include `typography` and `density` in the default dark theme.
     typography: mat.define-typography-config(),
