@@ -26,6 +26,8 @@ $ng-playground-theme: mat.define-light-theme(
       accent: $ng-playground-accent,
       warn: $ng-playground-warn,
     ),
+    // Only include `typography` and `density` in the default theme.
+    typography: mat.define-typography-config(),
   )
 );
 
@@ -36,8 +38,6 @@ $dark-theme: mat.define-dark-theme(
       primary: mat.define-palette(mat.$green-palette),
       accent: mat.define-palette(mat.$amber-palette),
     ),
-    // Only include `typography` and `density` in the default dark theme.
-    typography: mat.define-typography-config(),
     density: 0,
   )
 );
@@ -46,9 +46,37 @@ $dark-theme: mat.define-dark-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($ng-playground-theme);
+.dense-zone {
+  $ng-playground-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $ng-playground-primary,
+        accent: $ng-playground-accent,
+        warn: $ng-playground-warn,
+      ),
+      // Only include `typography` and `density` in the default theme.
+      typography: mat.define-typography-config(),
+      density: -3,
+    )
+  );
+  @include mat.all-component-themes($ng-playground-theme);
+}
 
 .dark-theme {
   @include mat.all-component-themes($dark-theme);
+
+  &.dense-zone {
+    $dark-theme: mat.define-dark-theme(
+      (
+        color: (
+          primary: mat.define-palette(mat.$green-palette),
+          accent: mat.define-palette(mat.$amber-palette),
+        ),
+        density: -3,
+      )
+    );
+    @include mat.all-component-themes($dark-theme);
+  }
 }
 
 /* You can add global styles to this file, and also import other style files */

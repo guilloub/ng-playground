@@ -16,7 +16,8 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  isDark = true;
+  isDark = false;
+  isDense = false;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 }

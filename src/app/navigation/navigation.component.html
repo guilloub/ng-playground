@@ -1,6 +1,7 @@
 <mat-sidenav-container
   class="sidenav-container mat-app-background"
   [class.dark-theme]="isDark"
+  [class.dense-zone]="isDense"
 >
   <mat-sidenav
     #drawer
@@ -32,6 +33,7 @@
       <mat-slide-toggle class="dark-theme-toggle" [(ngModel)]="isDark"
         >Dark mode</mat-slide-toggle
       >
+      <mat-slide-toggle [(ngModel)]="isDense">Dense mode </mat-slide-toggle>
     </mat-toolbar>
 
     <!-- Add Content Here -->
