@@ -42,12 +42,15 @@ $dark-theme: mat.define-dark-theme(
   )
 );
 
+mat.$theme-ignore-duplication-warnings: true;
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($ng-playground-theme);
+
 .dense-zone {
-  $ng-playground-theme: mat.define-light-theme(
+  $ng-playground-dense-theme: mat.define-light-theme(
     (
       color: (
         primary: $ng-playground-primary,
@@ -55,18 +58,17 @@ $dark-theme: mat.define-dark-theme(
         warn: $ng-playground-warn,
       ),
       // Only include `typography` and `density` in the default theme.
-      typography: mat.define-typography-config(),
       density: -3,
     )
   );
-  @include mat.all-component-themes($ng-playground-theme);
+  @include mat.all-component-colors($ng-playground-dense-theme);
 }
 
 .dark-theme {
-  @include mat.all-component-themes($dark-theme);
+  @include mat.all-component-colors($dark-theme);
 
   &.dense-zone {
-    $dark-theme: mat.define-dark-theme(
+    $dark-dense-theme: mat.define-dark-theme(
       (
         color: (
           primary: mat.define-palette(mat.$green-palette),
@@ -75,7 +77,7 @@ $dark-theme: mat.define-dark-theme(
         density: -3,
       )
     );
-    @include mat.all-component-themes($dark-theme);
+    @include mat.all-component-colors($dark-dense-theme);
   }
 }
 
