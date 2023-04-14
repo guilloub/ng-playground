@@ -16,7 +16,7 @@ export class AppComponent {
 
   @HostBinding('class')
   public get themeClass() {
-    const theme = this.darkModeUI ? 'dark-theme' : 'light-theme';
+    const theme = this.darkModeUI ? 'random-theme' : 'light-theme';
     const density = this.denseModeUI ? 'high-density' : 'low-density';
 
     return theme + ' ' + density;
@@ -37,13 +37,13 @@ export class AppComponent {
       this.overlayContainer.getContainerElement().classList;
 
     overlayContainerClasses.remove(
-      'dark-theme',
+      'random-theme',
       'light-theme',
       'high-density',
       'low-density'
     );
 
-    const theme = this.darkModeUI ? 'dark-theme' : 'light-theme';
+    const theme = this.darkModeUI ? 'random-theme' : 'light-theme';
     const density = this.denseModeUI ? 'high-density' : 'low-density';
 
     overlayContainerClasses.add(theme, density);
