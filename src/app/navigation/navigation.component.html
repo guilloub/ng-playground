@@ -1,8 +1,4 @@
-<mat-sidenav-container
-  class="sidenav-container mat-app-background"
-  [class.dark-theme]="isDark"
-  [class.dense-zone]="isDense"
->
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -31,10 +27,21 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>ng-playground</span>
-      <mat-slide-toggle class="dark-theme-toggle" [(ngModel)]="isDark"
-        >Dark mode</mat-slide-toggle
+      <button
+        type="button"
+        mat-icon-button
+        (click)="doToggleLightDark()"
+        class="dark-theme-toggle"
       >
-      <mat-slide-toggle [(ngModel)]="isDense">Dense mode </mat-slide-toggle>
+        <mat-icon aria-label="Side nav toggle icon">
+          {{ lightDarkToggleIcon }}
+        </mat-icon>
+      </button>
+      <button type="button" mat-icon-button (click)="doToggleDensity()">
+        <mat-icon aria-label="Side nav toggle icon">
+          {{ densityIcon }}
+        </mat-icon>
+      </button>
     </mat-toolbar>
 
     <!-- Add Content Here -->
