@@ -16,12 +16,13 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ButtonOverviewExampleComponent } from './pages/button-overview-example/button-overview-example.component';
+import { CounterComponent } from './pages/counter/counter.component';
 import { FormFieldDemoComponent } from './pages/form-field-demo/form-field-demo.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/radio-checkbox-example.component';
 import { SignalsComponent } from './pages/signals/signals.component';
-import { counterReducer } from './reducers/counter.reducer';
-import { CounterComponent } from './pages/counter/counter.component';
+import { counterReducer } from './state/reducers/counter.reducer';
+import { AppState } from './state/selectors/counter.selector';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { CounterComponent } from './pages/counter/counter.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    StoreModule.forRoot({ count: counterReducer }),
+    StoreModule.forRoot<AppState>({
+      counter: counterReducer,
+    }),
   ],
   providers: [
     {

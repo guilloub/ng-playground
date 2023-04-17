@@ -1,8 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { AppState, selectSquare } from '../state/selectors/counter.selector';
 
 @Component({
   selector: 'app-navigation',
@@ -13,7 +14,8 @@ export class NavigationComponent {
   @Output() darkThemeOn: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() highDensityOn: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  count$: Observable<number>;
+  count$ = this.store.pipe(select(selectSquare));
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -35,10 +37,8 @@ export class NavigationComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private store: Store<{ count: number }>
-  ) {
-    this.count$ = store.select('count');
-  }
+    private store: Store<AppState>
+  ) {}
 
   public doToggleLightDark() {
     this.isDark = !this.isDark;
