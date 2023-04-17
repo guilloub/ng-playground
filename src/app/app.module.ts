@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/radio-checkbox-example.component';
 import { SignalsComponent } from './pages/signals/signals.component';
 import { counterReducer } from './state/reducers/counter.reducer';
+import { themeReducer } from './state/reducers/theme.reducer';
 import { AppState } from './state/selectors/counter.selector';
 
 @NgModule({
@@ -49,6 +50,7 @@ import { AppState } from './state/selectors/counter.selector';
     MatListModule,
     StoreModule.forRoot<AppState>({
       counter: counterReducer,
+      theme: themeReducer,
     }),
   ],
   providers: [

@@ -3,7 +3,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AppState, selectSquare } from '../state/selectors/counter.selector';
+import { nextTheme } from '../state/actions/theme.actions';
+import { AppState } from '../state/selectors/counter.selector';
+import {
+  selectThemeIcon,
+  selectThemeName,
+  selectToggleCount,
+} from '../state/selectors/theme.selector';
 
 @Component({
   selector: 'app-navigation',
@@ -11,10 +17,11 @@ import { AppState, selectSquare } from '../state/selectors/counter.selector';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  @Output() darkThemeOn: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() highDensityOn: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  count$ = this.store.pipe(select(selectSquare));
+  count$ = this.store.pipe(select(selectToggleCount));
+  themeName$ = this.store.pipe(select(selectThemeName));
+  themeIcon$ = this.store.pipe(select(selectThemeIcon));
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -24,12 +31,7 @@ export class NavigationComponent {
     );
 
   // TODO refactor with ngrx store
-  isDark = false;
   isDense = false;
-  private darkThemeIcon = 'nightlight_round';
-  // private darkThemeIcon = 'celebration';
-  private lightThemeIcon = 'wb_sunny';
-  lightDarkToggleIcon = this.lightThemeIcon;
 
   private densitySmallIcon = 'density_small';
   private densityLargeIcon = 'density_medium';
@@ -41,11 +43,7 @@ export class NavigationComponent {
   ) {}
 
   public doToggleLightDark() {
-    this.isDark = !this.isDark;
-    this.lightDarkToggleIcon = this.isDark
-      ? this.lightThemeIcon
-      : this.darkThemeIcon;
-    this.darkThemeOn.emit(this.isDark);
+    this.store.dispatch(nextTheme());
   }
 
   public doToggleDensity() {

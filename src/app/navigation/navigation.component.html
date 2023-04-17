@@ -36,8 +36,11 @@
         (click)="doToggleLightDark()"
         class="dark-theme-toggle"
       >
-        <mat-icon aria-label="Side nav toggle icon">
-          {{ lightDarkToggleIcon }}
+        <mat-icon
+          aria-label="Side nav toggle icon"
+          title="Current theme: {{ themeName$ | async }}"
+        >
+          {{ themeIcon$ | async }}
         </mat-icon>
       </button>
       <button type="button" mat-icon-button (click)="doToggleDensity()">

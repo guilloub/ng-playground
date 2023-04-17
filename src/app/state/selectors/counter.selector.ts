@@ -1,9 +1,10 @@
 import { createSelector } from '@ngrx/store';
 import { CounterState } from '../reducers/counter.reducer';
+import { ThemeState } from '../reducers/theme.reducer';
 
 export interface AppState {
   counter: CounterState;
-  // theme: 'A' | 'B' | 'C';
+  theme: ThemeState;
 }
 
 export const counterKey = 'counter';
