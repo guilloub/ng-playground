@@ -9,6 +9,7 @@ import {
   AppState,
   selectCount,
 } from 'src/app/state/selectors/counter.selector';
+import { execTime } from 'src/decorators/exec-time.decorator';
 
 @Component({
   selector: 'app-counter',
@@ -20,14 +21,17 @@ export class CounterComponent {
 
   constructor(private store: Store<AppState>) {}
 
+  @execTime
   increment() {
     this.store.dispatch(increment());
   }
 
+  @execTime
   decrement() {
     this.store.dispatch(decrement());
   }
 
+  @execTime
   reset() {
     this.store.dispatch(reset());
   }
