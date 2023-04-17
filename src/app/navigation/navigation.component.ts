@@ -23,6 +23,7 @@ export class NavigationComponent {
   isDark = false;
   isDense = false;
   private darkThemeIcon = 'nightlight_round';
+  // private darkThemeIcon = 'celebration';
   private lightThemeIcon = 'wb_sunny';
   lightDarkToggleIcon = this.lightThemeIcon;
 

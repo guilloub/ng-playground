@@ -19,6 +19,7 @@ import { FormFieldDemoComponent } from './pages/form-field-demo/form-field-demo.
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/radio-checkbox-example.component';
 import { SignalsComponent } from './pages/signals/signals.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SignalsComponent } from './pages/signals/signals.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     {
