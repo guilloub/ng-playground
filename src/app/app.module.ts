@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
@@ -19,7 +20,8 @@ import { FormFieldDemoComponent } from './pages/form-field-demo/form-field-demo.
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RadioCheckboxExampleComponent } from './pages/radio-checkbox-example/radio-checkbox-example.component';
 import { SignalsComponent } from './pages/signals/signals.component';
-import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './reducers/counter.reducer';
+import { CounterComponent } from './pages/counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { StoreModule } from '@ngrx/store';
     RadioCheckboxExampleComponent,
     NavigationComponent,
     SignalsComponent,
+    CounterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { StoreModule } from '@ngrx/store';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ count: counterReducer }),
   ],
   providers: [
     {

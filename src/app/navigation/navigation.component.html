@@ -13,6 +13,7 @@
       <a mat-list-item routerLink="formfield">Form Field</a>
       <a mat-list-item routerLink="radio">Radio & Checkbox</a>
       <a mat-list-item routerLink="signals">Signals</a>
+      <a mat-list-item routerLink="counter">Ngrx Store counter</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,6 +28,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>ng-playground</span>
+
+      <div>- Count: {{ count$ | async }}</div>
       <button
         type="button"
         mat-icon-button

@@ -1,20 +1,11 @@
-import { Action } from '@ngrx/store';
-import { ActionTypes } from '../actions/counter.actions';
+import { createReducer, on } from '@ngrx/store';
+import { decrement, increment, reset } from '../actions/counter.actions';
 
 export const initialState = 0;
 
-export function counterReducer(state = initialState, action: Action) {
-  switch (action.type) {
-    case ActionTypes.Increment:
-      return state + 1;
-
-    case ActionTypes.Decrement:
-      return state - 1;
-
-    case ActionTypes.Reset:
-      return 0;
-
-    default:
-      return state;
-  }
-}
+export const counterReducer = createReducer(
+  initialState,
+  on(increment, (state) => state + 1),
+  on(decrement, (state) => state - 1),
+  on(reset, (state) => 0)
+);
