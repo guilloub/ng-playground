@@ -24,3 +24,14 @@ export const selectThemeIcon = createSelector(selectTheme, (state) => {
   if (rest === 2) return 'celebration';
   return 'wb_sunny';
 });
+
+export const selectDensityName = createSelector(selectTheme, (state) => {
+  return state.density;
+});
+
+export const selectDensityIcon = createSelector(
+  selectDensityName,
+  (densityName) => {
+    return `density_${densityName}`;
+  }
+);

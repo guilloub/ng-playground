@@ -1,11 +1,12 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { nextTheme } from '../state/actions/theme.actions';
+import { nextTheme, toggleDensity } from '../state/actions/theme.actions';
 import { AppState } from '../state/selectors/counter.selector';
 import {
+  selectDensityIcon,
   selectThemeIcon,
   selectThemeName,
   selectToggleCount,
@@ -17,11 +18,10 @@ import {
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  @Output() highDensityOn: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   count$ = this.store.pipe(select(selectToggleCount));
   themeName$ = this.store.pipe(select(selectThemeName));
   themeIcon$ = this.store.pipe(select(selectThemeIcon));
+  densityIcon$ = this.store.pipe(select(selectDensityIcon));
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -29,13 +29,6 @@ export class NavigationComponent {
       map((result) => result.matches),
       shareReplay()
     );
-
-  // TODO refactor with ngrx store
-  isDense = false;
-
-  private densitySmallIcon = 'density_small';
-  private densityLargeIcon = 'density_medium';
-  densityIcon = this.densityLargeIcon;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -47,10 +40,6 @@ export class NavigationComponent {
   }
 
   public doToggleDensity() {
-    this.isDense = !this.isDense;
-    this.densityIcon = this.isDense
-      ? this.densityLargeIcon
-      : this.densitySmallIcon;
-    this.highDensityOn.emit(this.isDense);
+    this.store.dispatch(toggleDensity());
   }
 }

@@ -2,7 +2,10 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from './state/selectors/counter.selector';
-import { selectThemeName } from './state/selectors/theme.selector';
+import {
+  selectDensityName,
+  selectThemeName,
+} from './state/selectors/theme.selector';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,7 @@ export class AppComponent {
   title = 'ng-playground';
 
   public themeName = 'light';
-  public denseModeUI = false;
+  public densityName = 'small';
 
   constructor(
     private overlayContainer: OverlayContainer,
@@ -23,19 +26,19 @@ export class AppComponent {
       this.themeName = themeName;
       this.applyThemeToOverlayContainers();
     });
+
+    this.store.pipe(select(selectDensityName)).subscribe((densityName) => {
+      this.densityName = densityName;
+      this.applyThemeToOverlayContainers();
+    });
   }
 
   @HostBinding('class')
   public get themeClass() {
     const theme = `${this.themeName}-theme`;
-    const density = this.denseModeUI ? 'high-density' : 'low-density';
+    const density = `${this.densityName}-density`;
 
     return theme + ' ' + density;
-  }
-
-  public handlHighDensityOn(isDense: boolean) {
-    this.denseModeUI = isDense;
-    this.applyThemeToOverlayContainers();
   }
 
   private applyThemeToOverlayContainers() {
@@ -51,7 +54,7 @@ export class AppComponent {
     );
 
     const theme = `${this.themeName}-theme`;
-    const density = this.denseModeUI ? 'high-density' : 'low-density';
+    const density = `${this.densityName}-density`;
 
     overlayContainerClasses.add(theme, density);
   }

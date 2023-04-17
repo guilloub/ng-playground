@@ -59,7 +59,7 @@ mat.$theme-ignore-duplication-warnings: true;
 // that you are using.
 @include mat.all-component-themes($light-theme);
 
-.light-theme.high-density {
+.light-theme.small-density {
   $light-dense-theme: mat.define-light-theme(
     (
       color: (
@@ -77,7 +77,7 @@ mat.$theme-ignore-duplication-warnings: true;
 .dark-theme {
   @include mat.all-component-themes($dark-theme);
 
-  &.high-density {
+  &.small-density {
     $dark-dense-theme: mat.define-dark-theme(
       (
         color: (
@@ -104,7 +104,7 @@ mat.$theme-ignore-duplication-warnings: true;
 
   @include mat.all-component-themes($random-theme);
 
-  &.high-density {
+  &.small-density {
     $random-dense-theme: mat.define-dark-theme(
       (
         color: (
