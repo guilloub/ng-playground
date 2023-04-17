@@ -25,9 +25,20 @@ export const selectThemeIcon = createSelector(selectTheme, (state) => {
   return 'wb_sunny';
 });
 
+export const selectThemeClass = createSelector(selectThemeName, (themeName) => {
+  return `${themeName}-theme`;
+});
+
 export const selectDensityName = createSelector(selectTheme, (state) => {
   return state.density;
 });
+
+export const selectDensityClass = createSelector(
+  selectDensityName,
+  (densityName) => {
+    return `${densityName}-density`;
+  }
+);
 
 export const selectDensityIcon = createSelector(
   selectDensityName,

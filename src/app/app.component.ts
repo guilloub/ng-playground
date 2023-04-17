@@ -3,8 +3,8 @@ import { Component, HostBinding } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from './state/selectors/counter.selector';
 import {
-  selectDensityName,
-  selectThemeName,
+  selectDensityClass,
+  selectThemeClass,
 } from './state/selectors/theme.selector';
 
 @Component({
@@ -15,30 +15,27 @@ import {
 export class AppComponent {
   title = 'ng-playground';
 
-  public themeName = 'light';
-  public densityName = 'small';
+  public themeClass = '';
+  public densityClass = '';
 
   constructor(
     private overlayContainer: OverlayContainer,
     private store: Store<AppState>
   ) {
-    this.store.pipe(select(selectThemeName)).subscribe((themeName) => {
-      this.themeName = themeName;
+    this.store.pipe(select(selectThemeClass)).subscribe((themeClass) => {
+      this.themeClass = themeClass;
       this.applyThemeToOverlayContainers();
     });
 
-    this.store.pipe(select(selectDensityName)).subscribe((densityName) => {
-      this.densityName = densityName;
+    this.store.pipe(select(selectDensityClass)).subscribe((densityClass) => {
+      this.densityClass = densityClass;
       this.applyThemeToOverlayContainers();
     });
   }
 
   @HostBinding('class')
-  public get themeClass() {
-    const theme = `${this.themeName}-theme`;
-    const density = `${this.densityName}-density`;
-
-    return theme + ' ' + density;
+  public get appClass() {
+    return this.themeClass + ' ' + this.densityClass;
   }
 
   private applyThemeToOverlayContainers() {
@@ -53,9 +50,6 @@ export class AppComponent {
       'low-density'
     );
 
-    const theme = `${this.themeName}-theme`;
-    const density = `${this.densityName}-density`;
-
-    overlayContainerClasses.add(theme, density);
+    overlayContainerClasses.add(this.themeClass, this.densityClass);
   }
 }
