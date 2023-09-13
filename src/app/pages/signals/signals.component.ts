@@ -16,4 +16,12 @@ export class SignalsComponent {
     timer(1000, 1000).subscribe(() => this.a.set(this.a() + 1));
     timer(2000, 2000).subscribe(() => this.b.set(this.b() + 20));
   }
+
+  incrementA() {
+    this.a.set(this.a() + 1);
+  }
+
+  incrementB() {
+    this.b.set(this.b() + 1);
+  }
 }
